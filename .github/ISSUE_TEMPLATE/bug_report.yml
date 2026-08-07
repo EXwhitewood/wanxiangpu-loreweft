@@ -1,0 +1,62 @@
+name: 故障报告
+description: 报告可复现的软件问题
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请勿公开 API Key、访问令牌、数据库、项目归档、个人路径或未发布作品正文。
+  - type: input
+    id: version
+    attributes:
+      label: 万象谱版本
+      placeholder: 例如 0.3.3
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows 版本
+      placeholder: 例如 Windows 11 24H2 x64
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: 问题类别
+      options:
+        - 安装或自动更新
+        - 启动或关闭
+        - 项目、章节或编辑器
+        - 大纲或世界观
+        - AI 功能或模型配置
+        - 导入、导出或项目归档
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 请写出从打开软件到出现问题的完整操作顺序。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: sanitized_evidence
+    attributes:
+      label: 已脱敏的截图或日志（可选）
+      description: 只提供定位问题需要的最小片段，并移除凭据、作品正文、用户名和个人路径。

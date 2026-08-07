@@ -1,0 +1,23 @@
+name: 功能建议
+description: 描述创作场景和希望改善的体验
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 创作场景
+      description: 请描述你正在完成什么任务，以及当前流程的困难。
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: 希望达到的结果
+    validations:
+      required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: 当前替代方法（可选）
