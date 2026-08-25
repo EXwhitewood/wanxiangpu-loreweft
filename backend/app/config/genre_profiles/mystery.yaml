@@ -1,0 +1,82 @@
+id: mystery
+display_name: 悬疑/推理
+
+rule_categories:
+  - evidence
+  - timeline
+  - alibi
+  - motive
+  - relationship
+
+scene_types:
+  - dialogue
+  - investigation
+  - revelation
+  - misdirection
+  - confrontation
+  - transition
+
+beat_roles:
+  - setup
+  - clue_plant
+  - pressure
+  - red_herring
+  - revelation
+  - hook
+
+contract_extensions:
+  - field: evidence_state
+    required: true
+    validation: "必须列出本场景结束时所有证据的状态变化"
+  - field: reader_known_facts
+    required: false
+    validation: "列出读者在本场景结束后应知道的关键事实"
+  - field: detective_known_facts
+    required: false
+    validation: "列出侦探/调查者在本场景结束后已掌握的事实"
+  - field: red_herring_policy
+    required: false
+    validation: "声明本场景误导信息的边界，不能破坏公平线索原则"
+  - field: suspect_alibi
+    required: false
+    validation: "列出本场景涉及的嫌疑人不在场证明状态"
+
+extension_validation:
+  - field: evidence_state
+    required: true
+    validation: "必须列出本场景结束时所有证据的状态变化"
+  - field: reader_known_facts
+    required: false
+    validation: "列出读者在本场景结束后应知道的关键事实"
+  - field: detective_known_facts
+    required: false
+    validation: "列出侦探/调查者在本场景结束后已掌握的事实"
+  - field: red_herring_policy
+    required: false
+    validation: "声明本场景误导信息的边界，不能破坏公平线索原则"
+  - field: suspect_alibi
+    required: false
+    validation: "列出本场景涉及的嫌疑人不在场证明状态"
+
+category_keywords:
+  evidence: ["证据", "指纹", "口供", "不在场", "物证", "DNA", "监控", "证人", "血迹", "凶器"]
+  timeline: ["时间线", "不在场证明", "案发时间", "先后顺序", "同时", "之前", "之后", "时间差"]
+  alibi: ["不在场", "证人", "目击", "行踪", "时间差", "时间线矛盾"]
+  motive: ["动机", "仇恨", "利益", "嫉妒", "复仇", "遗产", "保险", "秘密"]
+  relationship: ["误会", "信任", "背叛", "合作", "对立", "隐瞒", "利用", "保护"]
+
+location_schema:
+  type: matrix
+  fields: [crime_scene, suspect_locations, alibi_timeline, evidence_locations]
+
+activation_prohibitions:
+  - 不得破坏证据链完整性
+  - 不得让角色获得其不应知道的信息
+  - 不得违反时间线与不在场证明
+  - 不得提前揭示真凶身份（除非是公平线索推理的结果）
+  - 不得移除后续推理需要的关键证据
+
+style_policy:
+  default_strength: medium
+  allow_scene_override: true
+  enforce_dialogue_voice: true

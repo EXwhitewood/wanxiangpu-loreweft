@@ -1,0 +1,33 @@
+{
+  "tauriCliVersion": "2.11.4",
+  "tauriBundlerVersion": "2.9.4",
+  "upstreamTag": "tauri-bundler-v2.9.4",
+  "upstreamCommit": "8909f221d1515955fc843808032bdc5d62209c96",
+  "upstreamRepository": "https://github.com/tauri-apps/tauri",
+  "template": {
+    "path": "installer-template.nsi",
+    "upstreamPath": "crates/tauri-bundler/src/bundle/windows/nsis/installer.nsi",
+    "upstreamBytes": 32007,
+    "upstreamSha256": "20F4ECC730DEFB71F1342EAEAEC4021DF13BE3D843ABBA0EFFE88EA5835FA079",
+    "customizedSha256": "A27ADA92E4BBB3A51157009EDD58932E4C5368C8D4079BC3385C0053815BCB66"
+  },
+  "languages": {
+    "English": {
+      "path": "languages/English.nsh",
+      "upstreamPath": "crates/tauri-bundler/src/bundle/windows/nsis/languages/English.nsh",
+      "upstreamSha256": "1DAD40B023707A61F828DB1E184D9C1B029CB530C2DBBC4790DB265872EF7B5E",
+      "customizedSha256": "8D57592D80BACE7C167DED62E79E67E53B788066E4CABE3B2E86114245C5F725"
+    },
+    "SimpChinese": {
+      "path": "languages/SimpChinese.nsh",
+      "upstreamPath": "crates/tauri-bundler/src/bundle/windows/nsis/languages/SimpChinese.nsh",
+      "upstreamSha256": "AB8E9D2FE65D571B4E5EA77E65ECACF1E5BD28E8A8C094ABB9EFB6E4923A402D",
+      "customizedSha256": "5623C49BB6BDEE3E19EDFC6578D9FE09D0408B1289FFF442F441E1EC484429DA"
+    }
+  },
+  "license": {
+    "expression": "MIT",
+    "path": "third-party/TAURI-LICENSE-MIT",
+    "sha256": "9DD42EA92CFF2EDE5CD477CBFCCE051B2D0115C0AC7F368EE88CB545055DFF1D"
+  }
+}

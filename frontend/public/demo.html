@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Progress Bar Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .data-flow {
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.6), transparent);
+            background-size: 200% 100%;
+            animation: flow 1.5s infinite linear;
+        }
+        @keyframes flow {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .pulse-ring {
+            animation: ring-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes ring-pulse {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+        
+        .data-flow-amber {
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.6), transparent);
+            background-size: 200% 100%;
+            animation: flow 1.5s infinite linear;
+        }
+    </style>
+</head>
+<body class="bg-slate-200 flex flex-col items-center justify-center min-h-screen p-8 gap-8">
+
+<!-- 方案 1：科幻青蓝风格 -->
+<div class="relative overflow-hidden rounded-2xl bg-[#F4F7F9]/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-900/5 backdrop-blur-xl w-full max-w-3xl p-8">
+    <h2 class="text-base font-bold text-slate-800 mb-12">设计方案 A：科幻青蓝风格 (Cyan/Teal)</h2>
+    
+    <div class="relative flex items-center justify-between px-4">
+        <!-- Background Track Line -->
+        <div class="absolute left-8 right-8 top-1/2 h-[2px] -translate-y-1/2 bg-slate-200/80" style="z-index: 0;"></div>
+        
+        <!-- Active Track Line (Completed) -->
+        <div class="absolute left-8 top-1/2 h-[2px] -translate-y-1/2 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" style="width: 25%; z-index: 1;"></div>
+        
+        <!-- Flowing Track Line (Running) -->
+        <div class="absolute left-[33%] top-1/2 h-[2px] -translate-y-1/2 w-[25%] overflow-hidden" style="z-index: 1;">
+            <div class="w-full h-full data-flow"></div>
+        </div>
+
+        <!-- Node 1: Completed -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-emerald-400 ring-4 ring-emerald-50 shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
+            <span class="absolute top-6 text-[11px] font-bold text-slate-700 whitespace-nowrap">场景准备</span>
+        </div>
+
+        <!-- Node 2: Completed -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-emerald-400 ring-4 ring-emerald-50 shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
+            <span class="absolute top-6 text-[11px] font-bold text-slate-700 whitespace-nowrap">场景处理</span>
+        </div>
+
+        <!-- Node 3: Running -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="relative w-4 h-4 flex items-center justify-center">
+                <div class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)] z-10"></div>
+                <div class="absolute inset-0 rounded-full bg-sky-400 pulse-ring"></div>
+                <div class="absolute inset-[-3px] rounded-full border border-sky-300"></div>
+            </div>
+            <span class="absolute top-6 text-[12px] font-extrabold text-sky-500 whitespace-nowrap tracking-wide drop-shadow-sm">细节收割</span>
+        </div>
+
+        <!-- Node 4: Pending -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-2.5 h-2.5 rounded-full bg-slate-100 border-[1.5px] border-slate-300"></div>
+            <span class="absolute top-6 text-[10px] font-medium text-slate-400 whitespace-nowrap">状态更新</span>
+        </div>
+
+        <!-- Node 5: Pending -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-2.5 h-2.5 rounded-full bg-slate-100 border-[1.5px] border-slate-300"></div>
+            <span class="absolute top-6 text-[10px] font-medium text-slate-400 whitespace-nowrap">一致性校验</span>
+        </div>
+    </div>
+</div>
+
+<!-- 方案 2：高定琥珀风格 -->
+<div class="relative overflow-hidden rounded-2xl bg-[#F4F7F9]/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-900/5 backdrop-blur-xl w-full max-w-3xl p-8">
+    <h2 class="text-base font-bold text-slate-800 mb-12">设计方案 B：高定琥珀风格 (Amber/Gold)</h2>
+    
+    <div class="relative flex items-center justify-between px-4">
+        <!-- Background Track Line -->
+        <div class="absolute left-8 right-8 top-1/2 h-[2px] -translate-y-1/2 bg-slate-200/80" style="z-index: 0;"></div>
+        
+        <!-- Active Track Line (Completed) -->
+        <div class="absolute left-8 top-1/2 h-[2px] -translate-y-1/2 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" style="width: 25%; z-index: 1;"></div>
+        
+        <!-- Flowing Track Line (Running) -->
+        <div class="absolute left-[33%] top-1/2 h-[2px] -translate-y-1/2 w-[25%] overflow-hidden" style="z-index: 1;">
+            <div class="w-full h-full data-flow-amber"></div>
+        </div>
+
+        <!-- Node 1: Completed -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-emerald-400 ring-4 ring-emerald-50 shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
+            <span class="absolute top-6 text-[11px] font-bold text-slate-700 whitespace-nowrap">场景准备</span>
+        </div>
+
+        <!-- Node 2: Completed -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-emerald-400 ring-4 ring-emerald-50 shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
+            <span class="absolute top-6 text-[11px] font-bold text-slate-700 whitespace-nowrap">场景处理</span>
+        </div>
+
+        <!-- Node 3: Running -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="relative w-4 h-4 flex items-center justify-center">
+                <div class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_12px_rgba(251,191,36,0.8)] z-10"></div>
+                <div class="absolute inset-0 rounded-full bg-amber-400 pulse-ring"></div>
+                <div class="absolute inset-[-3px] rounded-full border border-amber-300"></div>
+            </div>
+            <span class="absolute top-6 text-[12px] font-extrabold text-amber-500 whitespace-nowrap tracking-wide drop-shadow-sm">细节收割</span>
+        </div>
+
+        <!-- Node 4: Pending -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-2.5 h-2.5 rounded-full bg-slate-100 border-[1.5px] border-slate-300"></div>
+            <span class="absolute top-6 text-[10px] font-medium text-slate-400 whitespace-nowrap">状态更新</span>
+        </div>
+
+        <!-- Node 5: Pending -->
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-2.5 h-2.5 rounded-full bg-slate-100 border-[1.5px] border-slate-300"></div>
+            <span class="absolute top-6 text-[10px] font-medium text-slate-400 whitespace-nowrap">一致性校验</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

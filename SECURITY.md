@@ -2,27 +2,21 @@
 
 ## 支持范围
 
-公开 Beta 阶段只为最新发布版本提供安全更新。旧版本可能需要先升级到当前版本。
+公开 Beta 阶段只保证最新发布版本和当前 `main` 源码接受安全修复。旧测试版可能要求先升级后再处理。
 
-During public beta, security fixes target the latest published release. Older builds may be required to upgrade first.
+During public beta, security fixes target the latest release and current `main` source. Older beta builds may need to upgrade first.
 
 ## 私密报告漏洞
 
-请优先使用本仓库的 GitHub Private Vulnerability Reporting。若该入口不可用，请创建一个不包含漏洞细节的普通 Issue，请求维护者提供私密联系方式。
+优先使用 GitHub 仓库的 Private Vulnerability Reporting。若该入口不可用，请创建一个不包含漏洞细节的普通 Issue，请求维护者提供私密联系方式；不要公开 PoC、密钥、真实作品或可直接利用的细节。
 
-报告建议包括：
+Prefer GitHub Private Vulnerability Reporting. If it is unavailable, open a public issue without exploit details and ask the maintainer for a private channel. Do not publish proofs of concept, credentials, real manuscripts, or immediately exploitable details.
 
-- 受影响版本和 Windows 环境；
-- 影响范围与可能的数据风险；
-- 最小复现条件；
-- 已完成的安全边界测试；
-- 建议的修复或缓解方向。
-
-在维护者确认修复与披露时间前，请勿公开 PoC、利用步骤或未修复细节。
+报告应包括：受影响版本、影响范围、最小复现条件、可能的数据风险和建议修复方向。请在维护者确认修复和披露时间前保持私密。
 
 ## 不要提交
 
-- API Key、访问令牌、Updater 私钥或其他凭据；
+- API Key、访问令牌或 Updater 私钥；
 - 用户数据库、项目归档或未发布作品；
-- 包含用户名、个人路径、代理凭据或模型请求正文的完整日志；
-- 可直接用于攻击第三方模型服务或其他用户的材料。
+- 包含个人路径、账户名或第三方凭据的完整日志；
+- 针对第三方模型服务的账号或计费问题。

@@ -7,32 +7,23 @@ body:
   - type: markdown
     attributes:
       value: |
-        感谢反馈。请勿公开 API Key、访问令牌、数据库、项目归档、个人路径或未发布作品正文。
+        感谢反馈。请勿在截图或日志中公开 API Key、访问令牌或未发布的作品正文。
   - type: input
     id: version
     attributes:
       label: 万象谱版本
-      placeholder: 例如 0.3.3
-    validations:
-      required: true
-  - type: input
-    id: windows
-    attributes:
-      label: Windows 版本
-      placeholder: 例如 Windows 11 24H2 x64
+      placeholder: 例如 0.3.5
     validations:
       required: true
   - type: dropdown
     id: surface
     attributes:
-      label: 问题类别
+      label: 出现位置
       options:
-        - 安装或自动更新
-        - 启动或关闭
-        - 项目、章节或编辑器
-        - 大纲或世界观
-        - AI 功能或模型配置
-        - 导入、导出或项目归档
+        - Windows 桌面端
+        - 浏览器开发版
+        - 后端服务
+        - 安装或更新
         - 其他
     validations:
       required: true
@@ -52,11 +43,7 @@ body:
   - type: textarea
     id: actual
     attributes:
-      label: 实际结果
+      label: 实际结果与日志
+      description: 可附截图和已脱敏日志。
     validations:
       required: true
-  - type: textarea
-    id: sanitized_evidence
-    attributes:
-      label: 已脱敏的截图或日志（可选）
-      description: 只提供定位问题需要的最小片段，并移除凭据、作品正文、用户名和个人路径。

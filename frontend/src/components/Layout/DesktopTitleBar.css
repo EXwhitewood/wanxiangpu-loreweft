@@ -1,0 +1,176 @@
+/* Hallmark · component: desktop titlebar · genre: atmospheric · design-system: DESIGN.md
+ * pre-emit critique: P5 H5 E5 S5 R5 V4 · states: default · hover · focus · active · disabled · contrast: pass (40–41)
+ */
+
+:root {
+  --desktop-titlebar-height: 36px;
+  --z-window-chrome: 300;
+}
+
+.desktop-titlebar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-window-chrome);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  height: var(--desktop-titlebar-height);
+  color: var(--color-ink);
+  background: var(--workspace-chrome);
+  border-bottom: 1px solid var(--workspace-border);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.desktop-titlebar__identity {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-inline: var(--space-sm);
+  overflow: hidden;
+  line-height: 1;
+}
+
+.desktop-titlebar__identity > * {
+  pointer-events: none;
+}
+
+.desktop-titlebar__mark {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: grid;
+  place-items: center;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border: 1px solid var(--border-emphasis);
+  border-radius: var(--radius-sm);
+}
+
+.desktop-titlebar__mark svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.desktop-titlebar__name,
+.desktop-titlebar__descriptor {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.desktop-titlebar__name {
+  flex: 0 0 auto;
+  color: var(--color-ink-strong);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+.desktop-titlebar__divider {
+  width: 1px;
+  height: 12px;
+  flex: 0 0 1px;
+  background: var(--workspace-border);
+}
+
+.desktop-titlebar__descriptor {
+  color: var(--color-ink);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.desktop-titlebar__controls {
+  display: flex;
+  height: 100%;
+}
+
+.desktop-titlebar__button {
+  width: 42px;
+  height: 100%;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  color: var(--color-ink-muted);
+  background: transparent;
+  border: 0;
+  border-left: 1px solid transparent;
+  border-radius: 0;
+  cursor: default;
+  line-height: 1;
+  transition:
+    color var(--motion-fast) var(--ease-ui),
+    background-color var(--motion-fast) var(--ease-ui),
+    transform var(--motion-fast) var(--ease-ui);
+}
+
+.desktop-titlebar__button svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.desktop-titlebar__button:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid var(--color-accent);
+  outline-offset: -3px;
+}
+
+.desktop-titlebar__button:active {
+  transform: translateY(1px);
+}
+
+.desktop-titlebar__button:disabled {
+  color: var(--color-ink-muted);
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (hover: hover) {
+  .desktop-titlebar__button:hover {
+    color: var(--color-ink-strong);
+    background: var(--color-accent-soft);
+    border-left-color: var(--workspace-border);
+  }
+
+  .desktop-titlebar__button--close:hover {
+    color: var(--surface-paper);
+    background: var(--color-error);
+    border-left-color: var(--color-error);
+  }
+}
+
+[data-desktop-chrome="custom"] .app-shell {
+  top: var(--desktop-titlebar-height);
+}
+
+[data-desktop-chrome="custom"] .lobby-page {
+  min-height: 100%;
+}
+
+@media (max-width: 640px) {
+  .desktop-titlebar__descriptor,
+  .desktop-titlebar__divider {
+    display: none;
+  }
+
+  .desktop-titlebar__button {
+    width: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop-titlebar__button {
+    transition-duration: 0ms;
+  }
+}

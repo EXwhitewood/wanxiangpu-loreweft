@@ -1,0 +1,75 @@
+id: scifi
+display_name: 科幻
+
+rule_categories:
+  - technology
+  - physics
+  - society
+  - biology
+  - history
+
+scene_types:
+  - dialogue
+  - action
+  - discovery
+  - exploration
+  - crisis
+  - transition
+
+beat_roles:
+  - setup
+  - pressure
+  - decision
+  - turning_point
+  - revelation
+  - hook
+
+contract_extensions:
+  - field: tech_constraints
+    required: false
+    validation: "列出本场景涉及的技术约束和物理限制"
+  - field: social_system_impact
+    required: false
+    validation: "声明本场景中社会系统/制度对角色行为的影响"
+  - field: terminology_density
+    required: false
+    validation: "声明本场景科技术语解释密度，避免信息过载"
+  - field: environment_hazards
+    required: false
+    validation: "列出本场景环境危险因素（真空/辐射/重力异常等）"
+
+extension_validation:
+  - field: tech_constraints
+    required: false
+    validation: "列出本场景涉及的技术约束和物理限制"
+  - field: social_system_impact
+    required: false
+    validation: "声明本场景中社会系统/制度对角色行为的影响"
+  - field: terminology_density
+    required: false
+    validation: "声明本场景科技术语解释密度，避免信息过载"
+  - field: environment_hazards
+    required: false
+    validation: "列出本场景环境危险因素（真空/辐射/重力异常等）"
+
+category_keywords:
+  technology: ["引擎", "量子", "纳米", "AI", "人工智能", "芯片", "网络", "程序", "算法", "协议"]
+  physics: ["引力", "光速", "维度", "虫洞", "跃迁", "辐射", "磁场", "暗物质", "反物质", "空间折叠"]
+  society: ["联邦", "帝国", "公司", "殖民地", "阶级", "法律", "叛乱", "革命", "协议", "联盟"]
+  biology: ["基因", "改造", "进化", "变异", "克隆", "共生", "休眠", "生态", "异种", "感染"]
+  history: ["大灭绝", "第一次接触", "战争", "殖民", "文明", "遗迹", "远古", "纪元"]
+
+location_schema:
+  type: journey
+  fields: [current_location, destination_location, distance_state, travel_method]
+
+activation_prohibitions:
+  - 不得违反已确立的物理/技术规则
+  - 不得让角色获得超越技术水平的便利
+  - 不得提前揭示未到期的科技悬念
+  - 不得移除后续章节需要出场的角色
+
+style_policy:
+  default_strength: medium
+  allow_scene_override: true
+  enforce_dialogue_voice: true

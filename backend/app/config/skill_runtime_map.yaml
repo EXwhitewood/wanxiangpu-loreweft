@@ -1,0 +1,141 @@
+# Legacy to Runtime Skill Map
+# Maps old skill identifiers to the unified Agent Skill Runtime IDs
+
+legacy_to_runtime:
+  scene_preparation:
+    runtime_id: scene_preparation
+    kind: service
+    domain: generation
+  attention_director:
+    runtime_id: attention_director
+    kind: service
+    domain: generation
+  style_polish:
+    runtime_id: style_polish
+    kind: service
+    domain: generation
+  outline_validation:
+    runtime_id: outline_validation
+    kind: service
+    domain: generation
+  core_query:
+    runtime_id: core_query
+    kind: service
+    domain: generation
+  shell_search:
+    runtime_id: shell_search
+    kind: service
+    domain: generation
+  state_query:
+    runtime_id: state_query
+    kind: service
+    domain: generation
+  consistency_check:
+    runtime_id: consistency_check
+    kind: prompt
+    domain: worldbuilder
+    note: "Previously missing from SKILL_REGISTRY, now registered via builtin SKILL.md"
+  completeness_check:
+    runtime_id: completeness_check
+    kind: prompt
+    domain: worldbuilder
+    note: "Previously missing from SKILL_REGISTRY, now registered via builtin SKILL.md"
+  derivation_chain_validation:
+    runtime_id: derivation_chain_validation
+    kind: prompt
+    domain: worldbuilder
+    note: "Previously missing from SKILL_REGISTRY, now registered via builtin SKILL.md"
+
+# Agent default skill assignments
+agent_defaults:
+  core_generation:
+    utility:
+      - scene_preparation
+      - attention_director
+    agent:
+      - narrative_writing
+      - scene_crafting
+      - anti_ai_prose
+      - show_dont_tell
+      - specific_detail_anchor
+      - rhythm_control
+  editor_in_chief:
+    utility:
+      - style_polish
+    agent:
+      - dag_planning
+      - quality_control
+      - contract_compilation
+      - style_experience_resolution
+  worldbuilder:
+    utility:
+      - worldbuilder_rule_tools
+    agent:
+      - worldbuilding_assist
+      - consistency_check
+      - completeness_check
+      - derivation_chain_validation
+      - iceberg_derivation
+      - cross_tab_memory
+  outline_architect:
+    utility:
+      - outline_validation
+    agent:
+      - outline_design
+      - chapter_splitting
+      - thread_planning
+      - pacing_structure
+  content_repair:
+    utility:
+      - state_query
+      - core_query
+    agent:
+      - fact_repair
+      - scene_restructure
+      - patch_minimality
+      - protected_span_policy
+  style_repair:
+    utility: []
+    agent:
+      - prose_repair
+      - voice_repair
+      - pacing_repair
+      - style_guard
+      - patch_minimality
+      - protected_span_policy
+  fbi_fact_repair:
+    utility:
+      - state_query
+      - core_query
+    agent:
+      - fact_repair
+      - patch_minimality
+      - protected_span_policy
+  fbi_prose_repair:
+    utility: []
+    agent:
+      - prose_repair
+      - patch_minimality
+      - protected_span_policy
+  fbi_pacing_repair:
+    utility: []
+    agent:
+      - pacing_repair
+      - patch_minimality
+      - protected_span_policy
+  fbi_voice_repair:
+    utility: []
+    agent:
+      - voice_repair
+      - patch_minimality
+      - protected_span_policy
+  fbi_style_guard:
+    utility: []
+    agent:
+      - style_guard
+      - protected_span_policy
+  fbi_scene_restructure:
+    utility: []
+    agent:
+      - scene_restructure
+      - protected_span_policy

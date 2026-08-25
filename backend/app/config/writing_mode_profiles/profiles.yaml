@@ -1,0 +1,252 @@
+profiles:
+  - id: general
+    label: 通用
+    description: 平衡读者体验、清晰度、场景压力和文体质量的默认模式。
+    target_reader: 中文小说读者
+    metric_weights:
+      reading_drive: 1.0
+      clarity: 1.0
+      dramatic_pressure: 1.0
+      protagonist_agency: 1.0
+      information_design: 1.0
+      emotional_engagement: 1.0
+      specificity: 1.0
+      prose_identity: 0.8
+      cultural_texture: 0.6
+      experimental_form: 0.2
+      intertextuality: 0.2
+    experience_defaults:
+      preferred_scene_pressure: [desire_vs_obstacle, social_risk, time_pressure]
+      preferred_information_carriers: [action, dialogue, object_detail, sensory_observation]
+      avoid: [long_exposition_before_pressure, abstract_moral_summary, isolated_internal_analysis]
+    literary_quality_defaults:
+      abstraction_ceiling: medium
+      specificity_requirement: medium
+      dialogue_pressure_requirement: medium
+      prose_distinctiveness_requirement: medium
+      intertextuality_requirement: low
+      cultural_texture_requirement: medium
+    style_interaction:
+      style_hard_rules_override_quality: true
+      allow_quality_to_request_style_negotiation: true
+      conflict_policy: negotiate
+    revision_policy:
+      local_patch_allowed: [exposition_to_action, generic_detail_to_specific_detail, repeated_sentence_pattern]
+      structural_rewrite_allowed: [missing_scene_pressure, passive_protagonist, no_reader_hook]
+      never_change: [fact_contract, responsibility, pov_boundary, established_event_outcome]
+
+  - id: commercial_web
+    label: 商业网文
+    description: 强调继续阅读欲、清晰爽点、可见压力和主角主动性。
+    target_reader: 中文商业网文读者
+    metric_weights:
+      reading_drive: 1.6
+      clarity: 1.4
+      dramatic_pressure: 1.5
+      protagonist_agency: 1.4
+      information_design: 1.0
+      emotional_engagement: 1.0
+      specificity: 0.9
+      prose_identity: 0.6
+      cultural_texture: 0.4
+      experimental_form: 0.1
+      intertextuality: 0.1
+    experience_defaults:
+      preferred_scene_pressure: [desire_vs_obstacle, social_risk, time_pressure, resource_shortage]
+      preferred_information_carriers: [action, dialogue, object_detail, public_consequence]
+      avoid: [slow_symbolic_opening, long_exposition_before_pressure, ambiguous_main_causality]
+    literary_quality_defaults:
+      abstraction_ceiling: medium
+      specificity_requirement: high
+      dialogue_pressure_requirement: medium
+      prose_distinctiveness_requirement: medium
+      intertextuality_requirement: low
+      cultural_texture_requirement: medium
+    style_interaction:
+      style_hard_rules_override_quality: true
+      allow_quality_to_request_style_negotiation: true
+      conflict_policy: negotiate
+    revision_policy:
+      local_patch_allowed: [exposition_to_action, generic_detail_to_specific_detail, weak_hook_patch]
+      structural_rewrite_allowed: [missing_scene_pressure, passive_protagonist, no_reader_hook]
+      never_change: [fact_contract, responsibility, pov_boundary, established_event_outcome]
+
+  - id: literary
+    label: 文学向
+    description: 强调文体辨识度、细节密度、叙事距离和情绪余韵。
+    target_reader: 重视语言与心理质感的小说读者
+    metric_weights:
+      reading_drive: 0.8
+      clarity: 0.9
+      dramatic_pressure: 0.9
+      protagonist_agency: 0.8
+      information_design: 1.0
+      emotional_engagement: 1.2
+      specificity: 1.4
+      prose_identity: 1.6
+      cultural_texture: 1.1
+      experimental_form: 0.5
+      intertextuality: 0.7
+    experience_defaults:
+      preferred_scene_pressure: [internal_contradiction, social_risk, memory_pressure]
+      preferred_information_carriers: [object_detail, sensory_observation, subtext, gesture]
+      avoid: [generic_emotion_label, flat_reported_summary, decorative_metaphor_without_scene_work]
+    literary_quality_defaults:
+      abstraction_ceiling: medium
+      specificity_requirement: high
+      dialogue_pressure_requirement: low
+      prose_distinctiveness_requirement: high
+      intertextuality_requirement: medium
+      cultural_texture_requirement: high
+    style_interaction:
+      style_hard_rules_override_quality: true
+      allow_quality_to_request_style_negotiation: true
+      conflict_policy: negotiate
+    revision_policy:
+      local_patch_allowed: [generic_detail_to_specific_detail, repeated_sentence_pattern, emotion_to_scene_evidence]
+      structural_rewrite_allowed: [emotion_without_scene_evidence, no_reader_hook]
+      never_change: [fact_contract, responsibility, pov_boundary, established_event_outcome]
+
+  - id: mystery
+    label: 悬疑
+    description: 强调公平线索、认知负担管理、疑问设计和节奏压力。
+    target_reader: 悬疑推理读者
+    metric_weights:
+      reading_drive: 1.4
+      clarity: 1.3
+      dramatic_pressure: 1.4
+      protagonist_agency: 1.1
+      information_design: 1.6
+      emotional_engagement: 0.8
+      specificity: 1.1
+      prose_identity: 0.8
+      cultural_texture: 0.5
+      experimental_form: 0.3
+      intertextuality: 0.3
+    experience_defaults:
+      preferred_scene_pressure: [knowledge_gap, time_pressure, social_risk]
+      preferred_information_carriers: [object_detail, sensory_observation, dialogue, contradiction]
+      avoid: [unfair_hidden_solution, clue_as_pure_symbol, answer_dump]
+    literary_quality_defaults:
+      abstraction_ceiling: medium
+      specificity_requirement: high
+      dialogue_pressure_requirement: medium
+      prose_distinctiveness_requirement: medium
+      intertextuality_requirement: low
+      cultural_texture_requirement: medium
+    style_interaction:
+      style_hard_rules_override_quality: true
+      allow_quality_to_request_style_negotiation: true
+      conflict_policy: negotiate
+    revision_policy:
+      local_patch_allowed: [clue_visibility_patch, exposition_to_action, generic_detail_to_specific_detail]
+      structural_rewrite_allowed: [unfair_information_design, no_reader_hook]
+      never_change: [fact_contract, responsibility, pov_boundary, established_event_outcome]
+
+  - id: emotional
+    label: 情感
+    description: 强调关系张力、情绪证据和人物选择。
+    target_reader: 重视人物关系和情绪流动的读者
+    metric_weights:
+      reading_drive: 1.1
+      clarity: 1.0
+      dramatic_pressure: 1.1
+      protagonist_agency: 1.0
+      information_design: 0.8
+      emotional_engagement: 1.6
+      specificity: 1.1
+      prose_identity: 0.9
+      cultural_texture: 0.7
+      experimental_form: 0.2
+      intertextuality: 0.2
+    experience_defaults:
+      preferred_scene_pressure: [relationship_risk, unspoken_need, choice_cost]
+      preferred_information_carriers: [dialogue, gesture, object_detail, silence]
+      avoid: [emotion_label_without_behavior, abstract_relationship_summary]
+    literary_quality_defaults:
+      abstraction_ceiling: medium
+      specificity_requirement: high
+      dialogue_pressure_requirement: high
+      prose_distinctiveness_requirement: medium
+      intertextuality_requirement: low
+      cultural_texture_requirement: medium
+    style_interaction:
+      style_hard_rules_override_quality: true
+      allow_quality_to_request_style_negotiation: true
+      conflict_policy: negotiate
+    revision_policy:
+      local_patch_allowed: [emotion_to_scene_evidence, generic_detail_to_specific_detail]
+      structural_rewrite_allowed: [missing_relationship_pressure, passive_protagonist]
+      never_change: [fact_contract, responsibility, pov_boundary, established_event_outcome]
+
+  - id: light_comedy
+    label: 轻喜剧
+    description: 强调互动节奏、误差感、人物反应和轻快钩子。
+    target_reader: 喜欢轻松互动和节奏反差的读者
+    metric_weights:
+      reading_drive: 1.3
+      clarity: 1.1
+      dramatic_pressure: 1.0
+      protagonist_agency: 1.1
+      information_design: 0.8
+      emotional_engagement: 1.0
+      specificity: 0.9
+      prose_identity: 1.0
+      cultural_texture: 0.4
+      experimental_form: 0.2
+      intertextuality: 0.2
+    experience_defaults:
+      preferred_scene_pressure: [social_mismatch, expectation_flip, awkward_choice]
+      preferred_information_carriers: [dialogue, action, reaction, object_detail]
+      avoid: [overexplained_joke, abstract_moral_summary, heavy_symbolic_delay]
+    literary_quality_defaults:
+      abstraction_ceiling: low
+      specificity_requirement: medium
+      dialogue_pressure_requirement: high
+      prose_distinctiveness_requirement: medium
+      intertextuality_requirement: low
+      cultural_texture_requirement: low
+    style_interaction:
+      style_hard_rules_override_quality: true
+      allow_quality_to_request_style_negotiation: true
+      conflict_policy: negotiate
+    revision_policy:
+      local_patch_allowed: [dialogue_timing_patch, repeated_sentence_pattern, weak_hook_patch]
+      structural_rewrite_allowed: [missing_interaction_pressure]
+      never_change: [fact_contract, responsibility, pov_boundary, established_event_outcome]
+
+  - id: experimental
+    label: 实验
+    description: 允许形式探索，但仍要求内部规则自洽、体验目标明确。
+    target_reader: 接受形式探索的小说读者
+    metric_weights:
+      reading_drive: 0.7
+      clarity: 0.7
+      dramatic_pressure: 0.8
+      protagonist_agency: 0.7
+      information_design: 1.0
+      emotional_engagement: 1.0
+      specificity: 1.1
+      prose_identity: 1.5
+      cultural_texture: 0.8
+      experimental_form: 1.4
+      intertextuality: 0.8
+    experience_defaults:
+      preferred_scene_pressure: [formal_tension, perception_gap, internal_contradiction]
+      preferred_information_carriers: [sensory_observation, motif, fragment, object_detail]
+      avoid: [randomness_without_rule, form_without_scene_work]
+    literary_quality_defaults:
+      abstraction_ceiling: high
+      specificity_requirement: medium
+      dialogue_pressure_requirement: low
+      prose_distinctiveness_requirement: high
+      intertextuality_requirement: medium
+      cultural_texture_requirement: medium
+    style_interaction:
+      style_hard_rules_override_quality: true
+      allow_quality_to_request_style_negotiation: true
+      conflict_policy: negotiate
+    revision_policy:
+      local_patch_allowed: [rule_clarification_patch, generic_detail_to_specific_detail]
+      structural_rewrite_allowed: [form_without_rule, no_reader_hook]
+      never_change: [fact_contract, responsibility, pov_boundary, established_event_outcome]

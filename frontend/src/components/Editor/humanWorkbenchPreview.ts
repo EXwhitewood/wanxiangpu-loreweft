@@ -1,0 +1,118 @@
+import type { WorkflowExecutionDetail } from "@/api/client";
+
+export const HUMAN_WORKBENCH_PREVIEW_ID = "__human_workbench_preview__";
+
+export function createHumanWorkbenchPreviewDetail(projectId: string): WorkflowExecutionDetail {
+  const now = new Date().toISOString();
+  const candidateText = [
+    "暮色压在宗门废墟上，风从断墙的缝隙里穿过。凤溪蹲在半截石阶旁，把从灰烬里拾出的铁钉一枚枚擦干净。",
+    "三师兄把药篓放到她手边，问她是否还记得玄火令。她从袖中取出昨日才得到的玄火令。铜牌上的纹路已经暗了，像是被人用手指反复摩挲过。",
+    "“不记得。”凤溪把它放回掌心，“但我知道它很重要。”",
+    "二师兄没有追问，只是继续清理倒塌的木梁。废墟里重新燃起第一盏灯。",
+  ].join("\n\n");
+  const textHash = "human-workbench-preview-v1";
+
+  return {
+    id: HUMAN_WORKBENCH_PREVIEW_ID,
+    project_id: projectId,
+    status: "waiting_human_content_review",
+    trigger_type: "editor_generate_ch29",
+    current_layer: 4,
+    total_layers: 11,
+    error_message: "Auto-fix budget exhausted, remaining conflicts require human review",
+    created_at: now,
+    updated_at: now,
+    result_context: {
+      chapter_number: 29,
+      review: {
+        scene_index: 1,
+        review_scope: "chapter",
+        candidate_text: candidateText,
+        attempts: [
+          { round: 1, result: "partial", remaining: 3 },
+          { round: 2, result: "no_progress", remaining: 2 },
+          { round: 3, result: "budget_exhausted", remaining: 2 },
+        ],
+        error_code: "auto_fix_budget_exhausted",
+        message: "自动修复预算已耗尽，系统保留了当前最佳候选稿，请确认剩余问题后继续。",
+        review_version: 1,
+        passed: false,
+        violations: [
+          {
+            issue_id: "preview-clue-provenance",
+            type: "clue_provenance_error",
+            severity: "high",
+            classification: "contradiction",
+            recommended_route: "fbi_fact_repair",
+            detail: "玄火令已在前章交给三师兄，本章却再次被描述为凤溪昨日才得到并随身持有，物品来源与持有状态冲突。",
+            target_span: "她从袖中取出昨日才得到的玄火令。",
+            expected_behavior: "保留玄火令已经出现过的事实，并依据前章持有状态改写当前动作，不得重新创设来源。",
+            suggested_strategy: "bounded_fact_repair",
+            scope: "prose_text",
+            blocks_commit: true,
+            user_visible: true,
+            review_status: "open",
+            repairable_by_text: true,
+            repair_engine: "fbi",
+            fbi_status: "needs_human",
+            fbi_case_id: "PREVIEW-FBI-001",
+            localization_status: "localized",
+            location_confidence: 0.98,
+            text_hash: textHash,
+          },
+          {
+            issue_id: "preview-ending-state",
+            type: "ending_state_not_reached",
+            severity: "high",
+            classification: "progression",
+            recommended_route: "chapter_ending_completion",
+            detail: "章节蓝图要求以师兄们开始重建宗门的明确行动收束，当前结尾只有灯被点亮，行动落点尚未完成。",
+            target_span: "废墟里重新燃起第一盏灯。",
+            expected_behavior: "在不重写前文的前提下补足搬运、规划或搭建等可见行动，让章末状态真正落地。",
+            suggested_strategy: "append_ending",
+            scope: "prose_text",
+            blocks_commit: true,
+            user_visible: true,
+            review_status: "open",
+            repairable_by_text: true,
+            localization_status: "localized",
+            location_confidence: 0.97,
+            text_hash: textHash,
+          },
+          {
+            issue_id: "preview-advisory",
+            type: "ai_punctuation_artifact",
+            severity: "medium",
+            classification: "advisory_quality",
+            recommended_route: "author_choice",
+            detail: "本段停顿略显均匀，可以在最终定稿时结合语义调整句间节奏。",
+            target_span: "铜牌上的纹路已经暗了，像是被人用手指反复摩挲过。",
+            expected_behavior: "仅作为非阻断建议，不要求为了通过工作流而修改。",
+            suggested_strategy: "author_review",
+            scope: "advisory",
+            blocks_commit: false,
+            user_visible: true,
+            review_status: "open",
+            text_hash: textHash,
+          },
+        ],
+        guidance: {
+          recommended_action: "human_review",
+          action_label: "人工修订并继续",
+          blocking_count: 2,
+          auto_repair_attempt_count: 3,
+          items: [],
+        },
+      },
+    },
+    steps: [
+      { id: "preview-plan", agent_name: "editor_planning", layer: -1, status: "completed", duration_ms: 1200, error_message: "", started_at: now, completed_at: now, output_snapshot: {} },
+      { id: "preview-context", agent_name: "context_compile", layer: -1, status: "completed", duration_ms: 900, error_message: "", started_at: now, completed_at: now, output_snapshot: {} },
+      { id: "preview-write", agent_name: "chapter_writer", layer: -1, status: "completed", duration_ms: 86000, error_message: "", started_at: now, completed_at: now, output_snapshot: {} },
+      { id: "preview-review", agent_name: "chapter_review", layer: 0, status: "completed", duration_ms: 22000, error_message: "", started_at: now, completed_at: now, output_snapshot: {} },
+      { id: "preview-intake", agent_name: "fbi_case_intake", layer: 1, status: "completed", duration_ms: 3100, error_message: "", started_at: now, completed_at: now, output_snapshot: {} },
+      { id: "preview-repair", agent_name: "parallel_repair_1", layer: 2, status: "completed", duration_ms: 67000, error_message: "", started_at: now, completed_at: now, output_snapshot: {} },
+      { id: "preview-recheck", agent_name: "parallel_recheck_1", layer: 3, status: "waiting_human_review", duration_ms: 18000, error_message: "Auto-fix budget exhausted", started_at: now, completed_at: null, output_snapshot: {} },
+    ],
+  };
+}
