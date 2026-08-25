@@ -1,0 +1,38 @@
+[
+  {
+    "name": "fact_local_replacement",
+    "domain": "fact",
+    "before": "She picked the red herb beside the gate.",
+    "target_span": "red herb",
+    "replacement": "blue herb",
+    "required_span": "blue herb",
+    "forbidden_span": "red herb"
+  },
+  {
+    "name": "contract_obligation_replacement",
+    "domain": "contract",
+    "before": "The scene ends before the furnace is lit.",
+    "target_span": "before the furnace is lit",
+    "replacement": "as the furnace is lit",
+    "required_span": "as the furnace is lit",
+    "forbidden_span": "before the furnace is lit"
+  },
+  {
+    "name": "rhythm_repeated_connector",
+    "domain": "rhythm",
+    "before": "Then she opened the door. Then she crossed the room.",
+    "target_span": "Then she crossed the room.",
+    "replacement": "She crossed the room without slowing.",
+    "required_span": "without slowing",
+    "forbidden_span": "Then she crossed the room"
+  },
+  {
+    "name": "pov_false_inner_access",
+    "domain": "pov",
+    "before": "He knew her secret fear, though she had said nothing.",
+    "target_span": "He knew her secret fear",
+    "replacement": "He saw her fingers tighten",
+    "required_span": "fingers tighten",
+    "forbidden_span": "knew her secret fear"
+  }
+]

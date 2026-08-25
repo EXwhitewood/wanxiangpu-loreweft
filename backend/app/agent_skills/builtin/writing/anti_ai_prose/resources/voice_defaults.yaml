@@ -1,0 +1,40 @@
+schema_version: 1
+language: zh-CN
+
+voice_fingerprint_schema:
+  sentence_distribution:
+    average: null
+    short_ratio: null
+    long_ratio: null
+  punctuation_habits:
+    preferred: []
+    avoided: []
+  lexical_register:
+    level: null
+    preferred_words: []
+    avoided_words: []
+  observation_domains:
+    profession: []
+    sensory: []
+    relationship: []
+    material_culture: []
+  metaphor_source_domains: []
+  transition_habits: []
+  uncertainty_style: null
+  emotional_indirection: null
+  preferred_markers: []
+  signature_phrases: []
+  avoided_words: []
+
+fallback_policy:
+  profile_required: false
+  behavior_when_missing:
+    - "记录 degraded，不伪造角色声纹。"
+    - "仍检查通用模型动作包、角色对白趋同和解释型对白。"
+    - "不因缺少声纹自动阻断正文，除非项目合同显式要求 profile_required。"
+
+voice_reconstruction_rules:
+  - "优先恢复观察方式，而不是简单替换同义词。"
+  - "保持角色知识边界、职业词汇和关系立场。"
+  - "保留有意设置的重复、口癖和不完整表达。"
+  - "不得通过错别字、随机断句、廉价俚语制造人味。"

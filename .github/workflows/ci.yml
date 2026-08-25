@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend / Python 3.12
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements-dev.txt
+      - name: Install dependencies
+        run: python -m pip install -r backend/requirements-dev.txt
+      - name: Compile backend
+        run: python -m compileall -q backend/app
+      - name: Run deterministic SQLite-safe tests
+        run: >-
+          python -m pytest -q
+          backend/tests/test_atomic_file.py
+          backend/tests/test_desktop_origin_contract.py
+          backend/tests/test_text_coercion.py
+          backend/tests/test_word_count.py
+
+  frontend:
+    name: Frontend / Node 22
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install dependencies
+        run: npm --prefix frontend ci
+      - name: Run tests
+        run: npm --prefix frontend test
+      - name: Build frontend
+        run: npm --prefix frontend run build
+
+  desktop:
+    name: Desktop host / Rust stable
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Select stable Rust
+        run: rustup default stable
+      - name: Test desktop host
+        run: cargo test --manifest-path src-tauri/Cargo.toml

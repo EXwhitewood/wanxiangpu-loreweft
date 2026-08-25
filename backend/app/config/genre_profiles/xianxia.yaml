@@ -1,0 +1,81 @@
+id: xianxia
+display_name: 修仙/奇幻
+
+rule_categories:
+  - magic
+  - combat
+  - cultivation
+  - society
+  - history
+
+scene_types:
+  - dialogue
+  - action
+  - discovery
+  - reflection
+  - transition
+  - cultivation
+  - breakthrough
+
+beat_roles:
+  - setup
+  - pressure
+  - decision
+  - turning_point
+  - hook
+  - breakthrough
+
+contract_extensions:
+  - field: current_location
+    required: false
+    validation: "声明 POV 角色当前所在地点"
+  - field: destination_location
+    required: false
+    validation: "旅程型场景需要声明目的地"
+  - field: distance_state
+    required: false
+    validation: "旅程型场景需要声明当前位置与目的地的距离关系"
+  - field: location_anchor
+    required: false
+    validation: "生成可读的空间锚点摘要"
+  - field: power_rule_refs
+    required: false
+    validation: "列出本场景涉及的力量/境界/资源约束"
+
+extension_validation:
+  - field: current_location
+    required: false
+    validation: "声明 POV 角色当前所在地点"
+  - field: destination_location
+    required: false
+    validation: "旅程型场景需要声明目的地"
+  - field: distance_state
+    required: false
+    validation: "旅程型场景需要声明当前位置与目的地的距离关系"
+  - field: location_anchor
+    required: false
+    validation: "生成可读的空间锚点摘要"
+  - field: power_rule_refs
+    required: false
+    validation: "列出本场景涉及的力量/境界/资源约束"
+
+category_keywords:
+  magic: ["法术", "灵力", "魔法", "力量", "灵根", "法力", "道法", "神通"]
+  combat: ["战斗", "武功", "技能", "对决", "比武", "厮杀", "交手"]
+  cultivation: ["修炼", "境界", "突破", "丹药", "功法", "筑基", "金丹", "元婴", "飞升"]
+  society: ["宗门", "门派", "师门", "规矩", "身份", "阶层", "长老", "掌门"]
+  history: ["上古", "远古", "传说", "秘辛", "遗迹", "禁地"]
+
+location_schema:
+  type: journey
+  fields: [current_location, destination_location, distance_state, route_risk]
+
+activation_prohibitions:
+  - 不得违反力量体系约束
+  - 不得提前揭示未到期伏笔
+  - 不得杀死后续章节需要的角色
+
+style_policy:
+  default_strength: medium
+  allow_scene_override: true
+  enforce_dialogue_voice: true

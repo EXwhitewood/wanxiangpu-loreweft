@@ -1,0 +1,75 @@
+id: romance
+display_name: 言情/情感
+
+rule_categories:
+  - relationship
+  - emotion
+  - social
+  - character
+  - timeline
+
+scene_types:
+  - dialogue
+  - emotional_beat
+  - misunderstanding
+  - confession
+  - reconciliation
+  - transition
+
+beat_roles:
+  - setup
+  - attraction
+  - misunderstanding
+  - tension
+  - turning_point
+  - hook
+
+contract_extensions:
+  - field: relationship_state
+    required: true
+    validation: "声明本场景结束时核心关系的状态变化"
+  - field: emotional_beat
+    required: false
+    validation: "声明本场景的情绪节拍（升温/降温/转折/平稳）"
+  - field: intimacy_boundary
+    required: false
+    validation: "声明本场景亲密度边界，不得超越当前关系阶段"
+  - field: misunderstanding_source
+    required: false
+    validation: "如果是误会场景，声明误会的来源和预期解除时机"
+
+extension_validation:
+  - field: relationship_state
+    required: true
+    validation: "声明本场景结束时核心关系的状态变化"
+  - field: emotional_beat
+    required: false
+    validation: "声明本场景的情绪节拍（升温/降温/转折/平稳）"
+  - field: intimacy_boundary
+    required: false
+    validation: "声明本场景亲密度边界，不得超越当前关系阶段"
+  - field: misunderstanding_source
+    required: false
+    validation: "如果是误会场景，声明误会的来源和预期解除时机"
+
+category_keywords:
+  relationship: ["误会", "告白", "分手", "复合", "暗恋", "暧昧", "表白", "拒绝", "接受", "承诺"]
+  emotion: ["心动", "失落", "嫉妒", "甜蜜", "心碎", "期待", "紧张", "害羞", "感动", "思念"]
+  social: ["家人", "朋友", "同事", "身份", "地位", "门第", "舆论", "压力", "阻碍"]
+  character: ["性格", "过去", "秘密", "成长", "改变", "坚持", "妥协", "选择"]
+  timeline: ["重逢", "离别", "约定", "纪念日", "季节", "时光", "等待"]
+
+location_schema:
+  type: single
+  fields: [location]
+
+activation_prohibitions:
+  - 不得让角色做出与当前关系阶段不符的亲密行为
+  - 不得无理由制造或解除核心误会
+  - 不得让配角单方面推动主线情感走向
+  - 不得违反已确立的角色情感逻辑
+
+style_policy:
+  default_strength: medium
+  allow_scene_override: true
+  enforce_dialogue_voice: true

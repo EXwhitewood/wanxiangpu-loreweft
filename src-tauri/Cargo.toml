@@ -1,0 +1,29 @@
+[package]
+name = "loreweft"
+version = "0.3.5"
+description = "万象谱 Loreweft - 智能小说创作引擎"
+authors = ["EXwhitewood"]
+license = "AGPL-3.0-only"
+repository = "https://github.com/EXwhitewood/wanxiangpu-loreweft"
+edition = "2021"
+
+[lib]
+name = "loreweft_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2", features = [] }
+tauri-plugin-updater = "2"
+url = "2"
+
+[target.'cfg(any(target_os = "macos", windows, target_os = "linux"))'.dependencies]
+rfd = "0.15"
+tauri-plugin-single-instance = "2"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.55"

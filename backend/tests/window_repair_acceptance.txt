@@ -1,0 +1,105 @@
+# 窗口修复验收固定测试清单
+# 循环 #5 建立（用户反馈：测试清单必须固定，不能每轮临时挑选）
+#
+# 版本: v1.0
+# 创建: 循环 #5
+#
+# 使用方法：
+#   cd backend
+#   set PYTHONPATH=.
+#   python -m pytest $(cat tests/window_repair_acceptance.txt | tr '\n' ' ') -v --tb=short
+#
+# 每轮循环记录：
+#   - Git commit/diff hash
+#   - 测试清单版本（本文件版本号）
+#   - 完整 pytest 命令
+#   - passed/failed/xfailed 数量
+#   - 数据库快照 ID（如有）
+#   - 特性开关快照（WINDOW_REPAIR_ENABLED/SHADOW_MODE 等）
+
+# ============================================================
+# 一、窗口修复核心模块（46 个测试）
+# ============================================================
+tests/test_window_repair_modules.py
+
+# ============================================================
+# 二、FBI 修复链路（20 个文件）
+# ============================================================
+tests/test_fbi_auto_repair_orchestrator.py
+tests/test_fbi_blueprint_protocol.py
+tests/test_fbi_blueprint_source_trace.py
+tests/test_fbi_contract_budget_repair.py
+tests/test_fbi_frozen_base_patch_chain.py
+tests/test_fbi_intelligent_blueprint.py
+tests/test_fbi_intent_compiler.py
+tests/test_fbi_normalization_evolution.py
+tests/test_fbi_patch_validator.py
+tests/test_fbi_repair_controller.py
+tests/test_fbi_repair_router.py
+tests/test_fbi_repair_success_rate.py
+tests/test_fbi_retry_blueprint_runtime.py
+tests/test_fbi_review_minister.py
+tests/test_fbi_spatial_conflict_routing.py
+tests/test_fbi_t10_9_gate1_warnings.py
+tests/test_fbi_tool_work_units.py
+tests/test_fbi_v2_executable_repairs.py
+tests/test_fbi_window_unified_blueprint.py
+
+# ============================================================
+# 三、章节修复/审查（7 个文件）
+# ============================================================
+tests/test_chapter_case_intake.py
+tests/test_chapter_repair_executor.py
+tests/test_chapter_repair_obligation_protocol.py
+tests/test_chapter_reference_repair.py
+tests/test_chapter_commit_health.py
+tests/test_chapter_commit_service.py
+tests/test_chapter_parallel_review_state_claims.py
+
+# ============================================================
+# 四、修复路由/调度（7 个文件）
+# ============================================================
+tests/test_repair_intent_dispatcher.py
+tests/test_unified_repair_router.py
+tests/test_recheck_supervisor.py
+tests/test_review_candidate_pipeline.py
+tests/test_review_case_file.py
+tests/test_review_issue_classification.py
+tests/test_review_issue_semantics.py
+
+# ============================================================
+# 五、DAG/工作流可观测性（8 个文件）
+# ============================================================
+tests/test_editor_generation_dag.py
+tests/test_plan12_crash_recovery.py
+tests/test_plan16_dag_observability.py
+tests/test_plan17_dag_context.py
+tests/test_plan17_handler_context_signature.py
+tests/test_plan17_real_handler_context_usage.py
+tests/test_editor_chat_workflow_observability.py
+tests/test_workflow_review_resume.py
+
+# ============================================================
+# 六、Agent Skill 验证器（窗口修复依赖，3 个文件）
+# ============================================================
+tests/test_agent_skill_validator.py
+tests/test_agent_skill_repair.py
+tests/test_agent_skill_commit_gate.py
+
+# ============================================================
+# 七、其他相关（4 个文件）
+# ============================================================
+tests/test_patch_merger.py
+tests/test_final_delta_repair_runtime.py
+tests/test_hard_correctness_gate.py
+tests/test_generation_commit_barrier.py
+tests/test_chapter_state_isolation.py
+
+# ============================================================
+# 总计：约 70 个测试文件
+# 安全测试铁律：以下测试不可随实现调整（黑盒铁律）
+#   - test_window_repair_modules.py 中事实保护、跨场景、偏移、Commit Gate、影子不写回相关
+#   - test_fbi_frozen_base_patch_chain.py
+#   - test_chapter_repair_obligation_protocol.py
+#   - test_generation_commit_barrier.py
+# ============================================================

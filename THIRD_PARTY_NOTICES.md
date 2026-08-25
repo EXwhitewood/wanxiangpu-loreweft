@@ -1,12 +1,18 @@
 # 第三方组件声明 / Third-Party Software Notice
 
-万象谱包含由各自作者维护的第三方依赖。第三方组件继续适用其各自的许可证和归属要求，不因万象谱采用闭源发行方式而改变。
+万象谱包含由各自作者维护的第三方依赖。万象谱自有代码采用 `AGPL-3.0-only`；第三方组件不因本项目重新开源而改变许可证，继续适用其各自条款。
 
-Loreweft depends on third-party software maintained by its respective authors. Those components remain governed by their own licenses and attribution requirements.
+Loreweft is licensed under `AGPL-3.0-only`, except for third-party components, which are not relicensed and remain governed by their respective licenses.
 
-以下清单对应万象谱 `v0.3.3` 官方 Windows 发行版，并由受控构建环境中的锁定依赖生成。该清单不替代依赖包随附的完整许可证文本。
+权威依赖版本记录在：
 
-The inventory below corresponds to the official Loreweft `v0.3.3` Windows distribution and was generated from locked dependencies in the controlled build environment. It does not replace the full license texts shipped by dependency authors.
+- `backend/requirements.txt`
+- `frontend/package-lock.json`
+- `src-tauri/Cargo.lock`
+
+发布前应运行 `scripts/generate-third-party-notices.py`，由锁文件和本机构建环境重新生成本文件中的依赖清单，并人工复核所有缺失或非标准许可证。生成的清单不得替代依赖包中随附的完整许可证文本。
+
+Before publishing a source or binary release, run `scripts/generate-third-party-notices.py` to regenerate the dependency inventory from lockfiles and the local build environment. Review every missing or non-standard license manually. This inventory does not replace full license texts shipped by dependency authors.
 
 ## Vendored Tauri NSIS sources
 
@@ -17,9 +23,12 @@ The customized Windows installer template and its English/Simplified Chinese bas
 - commit: `8909f221d1515955fc843808032bdc5d62209c96`
 - upstream template: `crates/tauri-bundler/src/bundle/windows/nsis/installer.nsi`
 - upstream template SHA-256: `20F4ECC730DEFB71F1342EAEAEC4021DF13BE3D843ABBA0EFFE88EA5835FA079`
-- selected license: MIT; full text: https://github.com/tauri-apps/tauri/blob/tauri-bundler-v2.9.4/LICENSE_MIT
+- local provenance and modification record: `src-tauri/installer/UPSTREAM.md`
+- selected license: MIT; full text at `src-tauri/installer/third-party/TAURI-LICENSE-MIT`
 
-相关 Tauri 材料继续适用其 MIT 许可证。
+这些上游文件只针对万象谱的 Windows 升级安全与交接行为做了受审查的局部修改；它们继续适用 Tauri 的 MIT 许可证，不适用万象谱自有代码的 `AGPL-3.0-only`。
+
+<!-- GENERATED-DEPENDENCIES: scripts/generate-third-party-notices.py replaces this marker. -->
 
 ## Python
 

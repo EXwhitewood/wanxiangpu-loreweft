@@ -1,0 +1,46 @@
+id: general
+display_name: 通用小说
+
+rule_categories:
+  - general
+  - society
+  - timeline
+  - character
+  - relationship
+
+scene_types:
+  - dialogue
+  - action
+  - discovery
+  - reflection
+  - transition
+
+beat_roles:
+  - setup
+  - pressure
+  - decision
+  - turning_point
+  - hook
+
+contract_extensions: []
+extension_validation: []
+
+category_keywords:
+  society: ["规矩", "制度", "礼仪", "身份", "阶层"]
+  timeline: ["时间线", "日期", "先后", "同时", "之前", "之后"]
+  character: ["性格", "习惯", "过去", "秘密", "动机"]
+  relationship: ["误会", "信任", "背叛", "合作", "对立"]
+
+location_schema:
+  type: single
+  fields: [location]
+
+activation_prohibitions:
+  - 不得违反已确立的世界规则
+  - 不得提前揭示后续保留信息
+  - 不得移除后续章节需要出场的角色
+
+style_policy:
+  default_strength: medium
+  allow_scene_override: true
+  enforce_dialogue_voice: true

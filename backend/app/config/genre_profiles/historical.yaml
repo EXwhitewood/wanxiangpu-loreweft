@@ -1,0 +1,75 @@
+id: historical
+display_name: 历史/古风
+
+rule_categories:
+  - society
+  - politics
+  - military
+  - culture
+  - timeline
+
+scene_types:
+  - dialogue
+  - court
+  - battle
+  - intrigue
+  - ceremony
+  - transition
+
+beat_roles:
+  - setup
+  - pressure
+  - decision
+  - turning_point
+  - sacrifice
+  - hook
+
+contract_extensions:
+  - field: temporal_anchor
+    required: false
+    validation: "声明本场景的历史时间锚点（年号/节气/时辰）"
+  - field: political_context
+    required: false
+    validation: "声明本场景的政治格局和权力关系"
+  - field: ritual_constraints
+    required: false
+    validation: "列出本场景涉及的礼制/等级约束"
+  - field: historical_event_refs
+    required: false
+    validation: "列出本场景引用或改写的历史事件"
+
+extension_validation:
+  - field: temporal_anchor
+    required: false
+    validation: "声明本场景的历史时间锚点（年号/节气/时辰）"
+  - field: political_context
+    required: false
+    validation: "声明本场景的政治格局和权力关系"
+  - field: ritual_constraints
+    required: false
+    validation: "列出本场景涉及的礼制/等级约束"
+  - field: historical_event_refs
+    required: false
+    validation: "列出本场景引用或改写的历史事件"
+
+category_keywords:
+  society: ["朝堂", "官场", "门阀", "世家", "庶民", "奴婢", "宗族", "礼法", "规矩", "身份"]
+  politics: ["皇帝", "大臣", "奏折", "圣旨", "党争", "变法", "削藩", "和亲", "联姻", "密谋"]
+  military: ["兵马", "征战", "围城", "粮草", "军令", "阵法", "将领", "边关", "烽火", "调兵"]
+  culture: ["诗词", "琴棋", "书画", "茶道", "节气", "祭祀", "婚嫁", "丧仪", "科举", "文会"]
+  timeline: ["年号", "即位", "驾崩", "登基", "改元", "大赦", "天灾", "兵变", "和议", "迁都"]
+
+location_schema:
+  type: single
+  fields: [location]
+
+activation_prohibitions:
+  - 不得违反已确立的历史设定和礼制规则
+  - 不得让角色拥有不符合身份地位的行为能力
+  - 不得提前揭示未到期的政治悬念
+  - 不得移除后续章节需要出场的角色
+
+style_policy:
+  default_strength: medium
+  allow_scene_override: true
+  enforce_dialogue_voice: true

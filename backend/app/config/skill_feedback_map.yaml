@@ -1,0 +1,90 @@
+# Skill Feedback Map
+# Maps quality issue types to skills that should be activated in response.
+# When a quality checker reports an issue, the next round's selector
+# will activate the corresponding skills.
+
+ai_emotion_label:
+  activate:
+    - show_dont_tell
+    - anti_ai_prose
+  reason: "情绪命名偏多，需要用现场证据承载情绪"
+
+emotional_claim_without_scene_evidence:
+  activate:
+    - show_dont_tell
+  reason: "情绪判断缺少现场证据支撑"
+
+specificity_budget_unmet:
+  activate:
+    - specific_detail_anchor
+  reason: "具体细节不足，需要锚定感官细节"
+
+abstract_without_evidence:
+  activate:
+    - specific_detail_anchor
+  reason: "抽象描述缺少证据支撑"
+
+rhythm_uniformity:
+  activate:
+    - rhythm_control
+  reason: "叙事节奏均匀，需要张弛交替"
+
+pacing_too_slow:
+  activate:
+    - rhythm_control
+  reason: "节奏偏慢，需要加速推进"
+
+pacing_too_fast:
+  activate:
+    - rhythm_control
+  reason: "节奏偏快，需要增加细节和过渡"
+
+ai_template_phrase:
+  activate:
+    - anti_ai_prose
+  reason: "检测到AI模板短语，需要去除AI味"
+
+character_voice_flat:
+  activate:
+    - voice_repair
+  reason: "角色声音扁平，需要增强个性表达"
+
+pov_cognition_leak:
+  activate:
+    - voice_repair
+  reason: "POV认知泄漏，角色知道不该知道的信息"
+
+fact_violation:
+  activate:
+    - fact_repair
+  reason: "事实违反，需要修复与设定冲突"
+
+state_inconsistency:
+  activate:
+    - fact_repair
+  reason: "状态不一致，需要修复逻辑矛盾"
+
+causal_error:
+  activate:
+    - fact_repair
+  reason: "因果错误，需要修复逻辑链"
+
+monotonous_expression:
+  activate:
+    - prose_repair
+  reason: "表达单调，需要丰富语言变化"
+
+missing_hook:
+  activate:
+    - pacing_repair
+  reason: "缺少章节钩子，需要增加悬念"
+
+scene_structure_broken:
+  activate:
+    - scene_restructure
+  reason: "场景结构破碎，需要重构"
+
+information_order_wrong:
+  activate:
+    - scene_restructure
+  reason: "信息顺序不当，需要重排"

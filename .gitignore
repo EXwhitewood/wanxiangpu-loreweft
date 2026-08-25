@@ -1,0 +1,94 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*$py.class
+*.so
+*.egg
+*.egg-info/
+.eggs/
+.pytest_cache/
+.venv/
+venv/
+
+# JavaScript
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
+
+# Rust / Tauri
+src-tauri/target/
+src-tauri/gen/
+src-tauri/.release-stage/
+src-tauri/.release-updater.conf.json
+src-tauri/resources/*
+!src-tauri/resources/.gitkeep
+
+# Local configuration and creative data
+.env
+.env.local
+.env.*.local
+data/
+backend/data/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+backups/
+小说集/
+backend/outline_export.json
+
+# Local agent/session and usage artifacts
+.workbuddy/
+.codebuddy/
+.trae/
+codex-sessions-*.zip
+usage_data_*.zip
+token_plan_usage_data_*.xlsx
+_billing/
+_billing2/
+/1.zip
+/2.zip
+
+# Release and signing material
+python/
+*.exe
+*.msi
+*.zip
+*.xlsx
+*.nsis.zip
+*.nsis.zip.sig
+latest.json
+.loreweft-updater/
+*.key
+*.key.pub
+*.pem
+*.pfx
+*.p12
+
+# Local workflow diagnostics
+/_*.py
+/_*.json
+/plan7_*.txt
+/tmp_ch*.json
+/backend/_tmp_*
+
+# Private local projects and personal material
+/interview-kb/
+/interview-coach/
+/孙乐_BOSS直聘_AI应用产品简历_最终.pdf
+/_billing/
+/_billing2/
+
+# Local tools and temporary artifacts
+.tmp/
+.codex-artifacts/
+dist/
+build/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

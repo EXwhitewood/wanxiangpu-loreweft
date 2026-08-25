@@ -1,0 +1,10 @@
+-r requirements.txt
+
+# Test runner and its development-only dependency closure. Keep these pinned so
+# a fresh public clone exercises the same test environment used for release QA.
+pytest==9.0.3
+pytest-asyncio==1.4.0
+iniconfig==2.3.0
+packaging==26.2
+pluggy==1.6.0
+Pygments==2.20.0

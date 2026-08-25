@@ -1,29 +1,21 @@
 <p align="center">
-  <img src="assets/brand/loreweft-icon.png" width="112" alt="万象谱 Loreweft 图标" />
+  <img src="src-tauri/icons/128x128.png" width="112" alt="万象谱 Loreweft 图标" />
 </p>
 
 <h1 align="center">万象谱 Loreweft</h1>
 
 <p align="center">
-  面向长篇小说工程的 AI 原生创作工作台<br />
+  面向长篇小说工程的 AI 原生创作引擎<br />
   <em>AI-native workspace for long-form fiction</em>
 </p>
 
 <p align="center">
-  <code>Windows 10 / 11</code> · <code>Local-first</code> · <code>Public Beta</code> · <code>Closed Source</code>
+  <code>v0.3.5 Beta</code> · <code>Windows 10 / 11</code> · <code>Local-first</code> · <code>AGPL-3.0</code>
 </p>
 
-<p align="center">
-  <a href="https://github.com/EXwhitewood/wanxiangpu-loreweft/releases/latest">下载最新版</a>
-  ·
-  <a href="CHANGELOG.md">版本记录</a>
-  ·
-  <a href="https://github.com/EXwhitewood/wanxiangpu-loreweft/issues">问题反馈</a>
-</p>
+![万象谱项目大厅](docs/images/readme/project-hall.png)
 
-![万象谱项目大厅](assets/screenshots/project-hall.png)
-
-<p align="center"><sub>“潮汐档案馆”为界面展示使用的虚构示例项目。</sub></p>
+<p align="center"><sub>万象谱项目大厅。下方预览中的“潮汐档案馆”是专用于界面展示的虚构示例项目。</sub></p>
 
 ## 项目简介
 
@@ -35,23 +27,21 @@
 - 用世界规则、人物、地点、伏笔和状态账本保存可持续演进的小说事实；
 - 用多阶段生成、校验、受控修订和提交门禁降低前后矛盾与失控改写；
 - 同时支持 AI 自动写作与作者手写，两条路径共享状态但互不越权；
-- 将项目数据保存在本地，模型调用只在用户主动使用相应 AI 功能时发生。
+- 将项目数据保存在本地 SQLite 与本地创作目录中，模型调用只在用户主动使用相应 AI 功能时发生。
 
 ## 当前状态
 
 | 项目 | 当前状态 |
 | --- | --- |
 | 版本 | `0.3.5 Beta` |
-| 发布目标 | Windows 10 / 11（x64） |
-| 桌面运行时 | Tauri 2；安装包内置前端、后端与 Python 3.12 运行时 |
-| 创作界面 | React 18、TypeScript、Tiptap |
-| 本地服务与数据 | FastAPI、SQLAlchemy、SQLite |
+| 发布目标 | Windows 10 / 11 |
+| 桌面运行时 | Tauri 2，安装包内置前端、后端与 Python 3.12 运行时 |
+| 前端 | React 18、TypeScript、Vite、Zustand、Tiptap |
+| 后端 | FastAPI、SQLAlchemy、SQLite |
 | 数据策略 | 本地优先；SQLite 是创作状态的权威持久层 |
-| AI 服务 | 用户自行配置兼容的模型服务 |
-| 更新方式 | 通过本仓库 GitHub Releases 检查并签名验证 |
-| 源码状态 | 闭源；本仓库只用于产品说明、反馈和发行 |
+| 开源许可 | 自有代码采用 `AGPL-3.0-only`；第三方组件继续适用各自许可证 |
 
-当前版本仍处于快速迭代阶段，界面、工作流和数据结构可能继续调整。重要项目在升级或迁移前，请先使用项目归档功能创建备份。
+当前版本仍处于快速迭代阶段，界面、工作流和数据结构可能继续调整。重要项目在升级、迁移或修改源码前，请先使用项目归档功能创建备份。
 
 ## 核心能力
 
@@ -60,14 +50,14 @@
 | 项目工作台 | 项目简介、目标字数、章节进度、最近编辑与功能入口 | 让一部长篇作品拥有清晰的工程主页 |
 | 结构大纲 | Story Plan、章节脊柱、故事线、章节蓝图和场景序列 | 把宏观构想拆成可以执行和检查的章节任务 |
 | 世界观系统 | 世界规则、人物、地点、伏笔、细节种子与设定晋升 | 减少设定散落、遗忘和相互冲突 |
-| 沉浸创作 | 正文编辑器、章节目录、蓝图面板、墨伴与流程监控 | 在同一界面完成手写、讨论、生成和审阅 |
+| 沉浸创作 | Tiptap 正文编辑器、章节目录、蓝图面板、墨伴与流程监控 | 在同一界面完成手写、讨论、生成和审阅 |
 | AI 生成工作流 | 上下文编译、场景生成、并行校验、受控修订、提交门禁 | 让生成过程可分阶段观察，而不是一次性黑盒输出 |
 | 状态与连续性 | 叙事时间、人物状态、事实命题、任务进度和章节派生状态 | 让后续章节能够继承已经发生的变化 |
-| 质量系统 | 一致性提醒、章节诊断、场景校验、修订候选和项目健康检查 | 将问题暴露给作者，并保留最终决定权 |
-| 智能体与 Skill | 按大纲、世界观、写作、推演、文笔和审校划分职责 | 让不同创作任务使用清晰的角色与约束 |
+| 质量系统 | 一致性提醒、章节诊断、场景校验、修订候选和项目健康检查 | 将问题暴露给作者，并保留“修复 / 忽略 / 调整大纲”的选择 |
+| 智能体与 Skill | 15 个职责明确的智能体、Skill 装配和独立模型配置 | 让大纲、写作、校验、推演和修订各自承担清晰责任 |
 | 导入、导出与归档 | Markdown、Word、项目归档与恢复 | 区分阅读导出和可恢复的完整项目备份 |
 
-部分增强能力需要用户自行配置兼容的模型 API。没有配置模型时，项目管理、正文编辑、世界观维护、导入导出等本地功能仍可使用。
+部分增强能力依赖用户自行配置的模型 API。没有配置模型时，项目管理、正文编辑、世界观维护、导入导出等本地功能仍可使用。
 
 ## 界面预览
 
@@ -75,25 +65,25 @@
 
 项目仪表盘汇总作品简介、目标字数、章节进度和最近编辑，并提供结构大纲、沉浸创作、世界法则、市场情报与健康诊断等入口。
 
-![项目仪表盘](assets/screenshots/project-dashboard.png)
+![项目仪表盘](docs/images/readme/project-dashboard.png)
 
 ### 沉浸创作与章节蓝图
 
 编辑器将章节目录、正文纸张和 AI 协作区并列呈现。作者可以直接手写与保存正文，也可以为当前章节维护目标、冲突、转折、章末钩子和场景序列，再把明确的蓝图交给生成工作流。
 
-![沉浸创作与章节蓝图](assets/screenshots/editor-workspace.png)
+![沉浸创作与章节蓝图](docs/images/readme/editor-workspace.png)
 
 ### 世界观工作台
 
 世界观工作台统一管理世界规则、人物、地点、伏笔和从正文中提取的候选发现。发现与晋升流程会区分待确认、自动确认和人工确认，方便作者追踪设定从正文证据进入核心世界观的过程。
 
-![世界观工作台](assets/screenshots/worldbuilding-overview.png)
+![世界观工作台](docs/images/readme/worldbuilding-overview.png)
 
 ### 智能体中心
 
-智能体中心按照大纲设计、世界观、正文创作、剧情推演、文笔系统、质量审校和智能修订划分职责，并展示每个智能体承担的能力与独立配置。
+智能体中心按照大纲设计、世界观、正文创作、剧情推演、文笔系统、质量审校和智能修订划分职责，并展示每个智能体装配的 Skill 与独立配置。
 
-![智能体中心](assets/screenshots/agent-center.png)
+![智能体中心](docs/images/readme/agent-center.png)
 
 ## 两种写作方式
 
@@ -117,64 +107,125 @@ flowchart TD
 
 ### 作者辅助写作
 
-作者可以完全手写正文。显式保存时，正文先被安全保存，摘要、世界观观察、叙事状态、进度和诊断在后台分阶段结算。附属分析失败不会阻止正文保存，也不会擅自改写作者文本。
+作者可以完全手写正文。显式保存时，正文先以短事务安全落库；摘要、世界观观察、叙事状态、进度和诊断在后台分阶段结算。附属分析失败不会阻止正文保存，也不会擅自改写作者文本。
 
-## 本地运行方式
+## 本地架构
 
 ```text
-Windows 桌面应用
-  ├─ 创作界面与正文编辑器
-  ├─ 仅在本机运行的应用服务
-  ├─ 本地项目数据与设置
-  └─ 用户选择的模型 API（仅在调用相应 AI 功能时访问）
+Windows 桌面应用（Tauri 2）
+  ├─ React / TypeScript 创作界面
+  ├─ 本地 FastAPI 服务（仅监听回环地址）
+  ├─ SQLite 与本地创作数据目录
+  └─ 用户选择的模型 API（仅在调用 AI 功能时访问）
 ```
 
-创作状态默认保存在本机，桌面应用负责管理本地服务的启动与退出。阅读导出用于分享或排版，项目归档才是包含完整工程信息的备份与恢复格式。
+| 目录 | 职责 |
+| --- | --- |
+| `frontend/` | React 创作界面、编辑器、状态管理、单元测试与端到端测试 |
+| `backend/app/api/` | 项目、章节、大纲、世界观、状态、工作流与导出 API |
+| `backend/app/services/` | 生成编排、状态结算、质量诊断、恢复与领域服务 |
+| `backend/app/agent_skills/` | 随应用分发的运行时 Skill、规范与参考资源 |
+| `src-tauri/` | Windows 桌面宿主、内置后端生命周期、安装器和更新器 |
+| `docs/` | 架构、开发、桌面构建、更新和专项设计文档 |
 
+浏览器开发模式默认使用 `127.0.0.1:5173` 与 `127.0.0.1:8000`。桌面发行版由 Tauri 启动内置后端，优先使用受控的本地端口，并由桌面宿主管理生命周期。
 
-## 下载、安装与自动更新
+更完整的实现说明见 [架构概览](docs/architecture.md)。
 
-请只从本仓库的 [Releases](https://github.com/EXwhitewood/wanxiangpu-loreweft/releases) 下载官方 Windows 安装包。安装包已经包含运行所需组件，不需要另行安装 Python、Node.js 或 Rust。
+## 安装与使用
 
-应用通过本仓库的 GitHub Releases 检查更新。每个更新包都必须通过应用内置公钥的签名验证；发布清单、安装包和签名文件会作为同一 Release 的资产提供。
+### 下载 Windows 测试版
 
-当前版本仍是 Public Beta，Windows 安装包尚未使用 Authenticode 代码签名，安装时可能显示“未知发布者”或触发 SmartScreen。升级或迁移前，请先使用应用内项目归档功能备份重要作品。
+普通用户可以从本仓库的 [Releases](https://github.com/EXwhitewood/wanxiangpu-loreweft/releases) 下载最新 Windows 安装包。桌面安装包已经包含前端、后端和独立 Python 运行时，不需要另外安装 Python、Node.js 或 Rust。
 
-## 数据与联网说明
+当前 Beta 尚未使用 Windows Authenticode 代码签名，安装时可能显示“未知发布者”或触发 SmartScreen。请只从本仓库 Releases 下载；Tauri 更新包会另外执行强制签名校验。
 
-- 项目、章节、设定、诊断和设置默认保存在本地应用数据目录；
+首次启动后，可以在“设置”中配置自己选择的模型服务。调用模型时，提示词、上下文和必要的作品片段可能发送给该服务商，请在使用前阅读相应服务商的隐私与数据保留政策。
+
+### 从源码运行
+
+开发环境需要：
+
+- Windows 10 / 11；
+- Python 3.12；
+- Node.js 与 npm；
+- 如需构建桌面版，还需要 Rust stable、Tauri 2 所需 Windows 构建工具和 WebView2。
+
+安装后端依赖并启动本地 API：
+
+```powershell
+py -m pip install -r backend/requirements-dev.txt
+py -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
+```
+
+在另一个终端安装并启动前端：
+
+```powershell
+npm --prefix frontend install
+npm --prefix frontend run dev
+```
+
+打开 `http://127.0.0.1:5173`。前端开发服务器会把 `/api` 请求代理到 `http://127.0.0.1:8000`。
+
+也可以使用仓库脚本重启本地前后端：
+
+```powershell
+.\restart-dev.ps1
+```
+
+环境变量、测试策略和数据安全约定见 [开发指南](docs/development.md)。桌面安装包的隔离构建流程见 [桌面构建指南](docs/desktop-build.md)。
+
+## 开发验证
+
+普通改动至少建议执行与改动范围对应的检查：
+
+```powershell
+py -m compileall -q backend/app
+npm --prefix frontend test
+npm --prefix frontend run build
+cargo test --manifest-path src-tauri/Cargo.toml
+```
+
+前后端已经启动时，可以运行端到端测试：
+
+```powershell
+npm --prefix frontend run test:e2e
+```
+
+涉及数据库、章节保存、生成提交或恢复逻辑的改动，应使用隔离的临时 SQLite 数据库验证，不要对真实创作库执行写入测试。
+
+## 数据、隐私与作品权利
+
+- 项目、章节、世界观、诊断、设置和创作状态默认保存在本地创作数据目录；
 - 当前公开版本不会向万象谱维护者发送产品分析遥测；
-- 只有在用户主动调用模型功能时，必要的提示词、上下文和作品片段才可能发送给用户选择的模型服务商；
-- 更新检查会访问 GitHub Releases，并可能使用用户当前的系统代理；
-- 公开仓库和 GitHub Release 不包含用户数据库、项目归档或未公开小说；
-- 请勿在公开 Issue 中提交 API Key、数据库、项目归档或未公开作品全文。
+- 只有在用户配置并主动调用模型能力时，相关上下文才会发送给用户选择的模型服务商；
+- 源码仓库和 GitHub Release 不包含用户数据库、未公开小说或真实生产快照；
+- 用户保留其输入与原创作品的权利，可以出版、签约、销售、授权和商业改编，万象谱不收取版税或收入分成。
 
-详情见 [隐私说明](PRIVACY.md) 与 [安全政策](SECURITY.md)。
+详细条款见 [隐私说明](PRIVACY.md) 与 [用户作品权利](OUTPUT_RIGHTS.md)。请勿在 Issue、截图或日志中提交 API Key、Updater 私钥、真实数据库、未公开作品全文或其他敏感信息。
 
-## 用户作品权利
+## 开源许可与官方发行
 
-用户保留其输入内容和原创作品的权利，可以出版、签约、销售、授权、翻译、改编或以其他方式商业使用作品。万象谱不会仅因软件参与创作、编辑、诊断或保存而主张作品所有权、版税或收入分成。
+万象谱自有代码自本次重新开源起采用 [GNU Affero General Public License v3.0 only](LICENSE)。你可以使用、研究、修改和分发源码，也可以进行商业使用；分发修改版或通过网络向用户提供修改版功能时，需要按许可证要求向相应用户提供完整对应源码，并保留许可证和版权声明。
 
-详情见 [用户作品权利说明](OUTPUT_RIGHTS.md)。
+开源许可证不授予“万象谱”“Loreweft”、Logo、应用图标等商标权。公开分发的修改版应遵守 [品牌与修改版政策](TRADEMARKS.md)，使用独立的应用标识、更新地址和签名密钥，并明确标注为非官方版本。官方安装包、Release 与 Updater 签名继续由本仓库维护。
 
-## 仓库范围与版权
+本次重新开源之前已经发布的历史源码副本继续适用其发布时附带的许可证；`AGPL-3.0-only` 适用于本次源码导入提交及其后明确按该许可证发布的版本。
 
-这是万象谱的公开产品、支持与发行仓库，用于发布产品说明、版本记录、Issue 和经过签名的安装包。仓库不提供核心源码、内部构建系统或源码构建支持，也不接收代码 Pull Request。
-
-本仓库不是开源源码仓库。除明确标注适用独立许可证的第三方材料外，仓库内容与万象谱官方程序 Copyright © 2026 EXwhitewood，保留所有权利。第三方组件归属见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
-
-## 相关文档
+## 文档索引
 
 | 文档 | 内容 |
 | --- | --- |
-| [版本记录](CHANGELOG.md) | 已发布版本和面向用户的变化 |
-| [隐私说明](PRIVACY.md) | 本地数据、模型调用和联网行为 |
-| [用户作品权利](OUTPUT_RIGHTS.md) | 输入内容、原创作品和商业使用权利 |
+| [开发指南](docs/development.md) | 环境、启动、验证和数据安全 |
+| [架构概览](docs/architecture.md) | 本地分层、双写作路径、状态与恢复 |
+| [桌面构建](docs/desktop-build.md) | Windows 安装包、运行时与签名要求 |
+| [开源许可证](LICENSE) | `AGPL-3.0-only` 的完整法律文本 |
+| [贡献方式](CONTRIBUTING.md) | Issue、Fork 和当前贡献政策 |
 | [安全政策](SECURITY.md) | 漏洞报告与敏感信息处理 |
-| [贡献与反馈](CONTRIBUTING.md) | Issue、功能建议和当前贡献政策 |
 | [第三方组件](THIRD_PARTY_NOTICES.md) | 依赖、许可证与上游来源 |
-| [品牌政策](TRADEMARKS.md) | 名称、Logo 和官方身份边界 |
 
-## 反馈
+## 反馈与贡献
 
-错误报告和功能建议请提交到 [GitHub Issues](https://github.com/EXwhitewood/wanxiangpu-loreweft/issues)。提交前请阅读 [贡献与反馈说明](CONTRIBUTING.md)；安全漏洞请按照 [SECURITY.md](SECURITY.md) 使用私密渠道报告。
+欢迎通过 GitHub Issues 提交错误报告和功能建议，也欢迎提交范围清晰、经过验证的 Pull Request。较大的功能或架构调整建议先开 Issue 对齐方向；具体要求见 [贡献指南](CONTRIBUTING.md)。提交日志、截图或测试数据前请先脱敏。
+
+Copyright © 2026 EXwhitewood.
